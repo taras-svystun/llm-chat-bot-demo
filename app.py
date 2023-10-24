@@ -36,6 +36,16 @@ if uploaded_file is not None:
     )
 
 
+def clear_chat_history():
+    st.session_state.messages = [
+        {"role": "assistant", "content": "How can I help you?"}
+    ]
+
+
+st.button("Clear Chat History", on_click=clear_chat_history)
+
+
+
 if "messages" not in st.session_state.keys():
     st.session_state.messages = [
         {"role": "assistant", "content": "How can I help you?"}
@@ -45,12 +55,6 @@ if "messages" not in st.session_state.keys():
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.write(message["content"])
-
-
-def clear_chat_history():
-    st.session_state.messages = [
-        {"role": "assistant", "content": "How can I help you?"}
-    ]
 
 
 def generate_response(prompt_input):
@@ -75,6 +79,3 @@ if st.session_state.messages[-1]["role"] != "assistant":
             placeholder.markdown(response)
     message = {"role": "assistant", "content": response}
     st.session_state.messages.append(message)
-
-
-st.button("Clear Chat History", on_click=clear_chat_history)
