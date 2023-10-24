@@ -53,9 +53,6 @@ def clear_chat_history():
     ]
 
 
-st.button("Clear Chat History", on_click=clear_chat_history)
-
-
 def generate_response(prompt_input):
     system_prompt = "Please answer the questions laconically and clearly. "
 
@@ -78,3 +75,6 @@ if st.session_state.messages[-1]["role"] != "assistant":
             placeholder.markdown(response)
     message = {"role": "assistant", "content": response}
     st.session_state.messages.append(message)
+
+
+st.button("Clear Chat History", on_click=clear_chat_history)
