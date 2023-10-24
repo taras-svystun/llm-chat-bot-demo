@@ -19,7 +19,8 @@ The following technologies were used to approach the aforementioned problem:
 
 ## Issues
 In the following chapter I describe the issues, which are recommended to be improved
-1. Loading the txt file is an overkill. It is recommended to upload a file and load it straight away without saving it to disk.
+1. The model was hosted on paid cloud service. After the development, the cloud service was shut down. It needs to be turned on, when somebody wants to test the app.
+2. Loading the txt file is an overkill. It is recommended to upload a file and load it straight away without saving it to disk.
 
 
 ![Example 1](example_1.jpeg)
