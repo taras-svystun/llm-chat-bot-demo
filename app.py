@@ -1,5 +1,3 @@
-import os
-import replicate
 import streamlit as st
 from langchain.llms import OpenLLM
 from langchain.chains import RetrievalQA
@@ -9,62 +7,53 @@ from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.text_splitter import CharacterTextSplitter
 
 st.set_page_config(page_title="💬 Chatbot")
-st.title('💬 Chatbot for text document QA')
-
-# with st.sidebar:
-
-    # if 'REPLICATE_API_TOKEN' in st.secrets:
-    #     st.success('API key already provided!', icon='✅')
-    #     replicate_api = st.secrets['REPLICATE_API_TOKEN']
-    # else:
-    #     replicate_api = st.text_input('Enter Replicate API token:', type='password')
-    #     if not (replicate_api.startswith('r8_') and len(replicate_api)==40):
-    #         st.warning('Please enter your credentials!', icon='⚠️')
-    #     else:
-    #         st.success('Proceed to entering your prompt message!', icon='👉')
-
-# os.environ['REPLICATE_API_TOKEN'] = replicate_api
+st.title("💬 Chatbot for text document QA")
 
 uploaded_file = st.file_uploader("Add a text file")
 if uploaded_file is not None:
-    
-
-    with open('_sample.txt', 'w') as file:
+    with open("_sample.txt", "w") as file:
         file.write("".join([line.decode() for line in uploaded_file]))
 
-    loader = TextLoader('_sample.txt')
+    loader = TextLoader("_sample.txt")
     documents = loader.load()
 
-    text_splitter=CharacterTextSplitter(separator='\n',
-                                        chunk_size=1000,
-                                        chunk_overlap=50)
+    text_splitter = CharacterTextSplitter(
+        separator="\n", chunk_size=1000, chunk_overlap=50
+    )
 
-    text_chunks=text_splitter.split_documents(documents)
+    text_chunks = text_splitter.split_documents(documents)
 
     texts = text_splitter.split_documents(documents)
 
     embeddings = OpenAIEmbeddings()
-    vectorstore=FAISS.from_documents(text_chunks, embeddings)
+    vectorstore = FAISS.from_documents(text_chunks, embeddings)
 
     server_url = "https://683c-38-147-83-24.ngrok-free.app"
     llm = OpenLLM(server_url=server_url)
 
-    qa = RetrievalQA.from_chain_type(llm=llm, chain_type="stuff", retriever=vectorstore.as_retriever())
-
-    qa.run("What is the capital of Canada?")
+    qa = RetrievalQA.from_chain_type(
+        llm=llm, chain_type="stuff", retriever=vectorstore.as_retriever()
+    )
 
 
 if "messages" not in st.session_state.keys():
-    st.session_state.messages = [{"role": "assistant", "content": "How can I help you?"}]
+    st.session_state.messages = [
+        {"role": "assistant", "content": "How can I help you?"}
+    ]
 
 
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.write(message["content"])
 
+
 def clear_chat_history():
-    st.session_state.messages = [{"role": "assistant", "content": "How can I help you?"}]
-st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
+    st.session_state.messages = [
+        {"role": "assistant", "content": "How can I help you?"}
+    ]
+
+
+st.sidebar.button("Clear Chat History", on_click=clear_chat_history)
 
 
 def generate_response(prompt_input):
@@ -73,11 +62,6 @@ def generate_response(prompt_input):
     query = system_prompt + prompt_input
     output = qa.run(query)
     return output
-    # try:
-    #     output = qa.run(query)
-    # except NameError:
-    #     output = "You must load the text document first"
-    # return output
 
 
 if prompt := st.chat_input(disabled=not uploaded_file is not None):
