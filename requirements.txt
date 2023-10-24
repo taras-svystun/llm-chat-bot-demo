@@ -1,0 +1,7 @@
+streamlit
+replicate
+langchain
+openllm
+openai
+tiktoken
+faiss-cpu
