@@ -16,11 +16,12 @@ The following technologies were used to approach the aforementioned problem:
 2. Upload your .txt file (one can try `sample.txt` from the repo).
 3. Ask a question.
 
-![Example 1](example_1.jpeg)
-
-![Example 2](example_2.jpeg)
-
 
 ## Issues
 In the following chapter I describe the issues, which are recommended to be improved
 1. Loading the txt file is an overkill. It is recommended to upload a file and load it straight away without saving it to disk.
+
+
+![Example 1](example_1.jpeg)
+
+![Example 2](example_2.jpeg)
