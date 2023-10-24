@@ -53,7 +53,7 @@ def clear_chat_history():
     ]
 
 
-st.sidebar.button("Clear Chat History", on_click=clear_chat_history)
+st.button("Clear Chat History", on_click=clear_chat_history)
 
 
 def generate_response(prompt_input):
