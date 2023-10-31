@@ -1,10 +1,11 @@
 import streamlit as st
-from langchain.llms import OpenLLM
 from langchain.chains import RetrievalQA
 from langchain.vectorstores import FAISS
 from langchain.document_loaders import TextLoader
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.text_splitter import CharacterTextSplitter
+
+from cutom_llm import CustomLLM
 
 st.set_page_config(page_title="💬 Chatbot")
 st.title("💬 Chatbot for text document QA")
@@ -28,8 +29,7 @@ if uploaded_file is not None:
     embeddings = OpenAIEmbeddings()
     vectorstore = FAISS.from_documents(text_chunks, embeddings)
 
-    server_url = "https://6dfb-185-32-161-60.ngrok-free.app"
-    llm = OpenLLM(server_url=server_url)
+    llm = CustomLLM(n=10)
 
     qa = RetrievalQA.from_chain_type(
         llm=llm, chain_type="stuff", retriever=vectorstore.as_retriever()
