@@ -7,9 +7,6 @@ from typing import Any, List, Mapping, Optional
 from langchain.callbacks.manager import CallbackManagerForLLMRun
 from langchain.llms.base import LLM
 
-from dotenv import load_dotenv
-load_dotenv()
-
 
 link_on_endp = os.getenv("LINK_ON_ENDPOINT")
 
