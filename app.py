@@ -28,7 +28,7 @@ if uploaded_file is not None:
     embeddings = OpenAIEmbeddings()
     vectorstore = FAISS.from_documents(text_chunks, embeddings)
 
-    server_url = "https://6dfb-185-32-161-60.ngrok-free.app"
+    server_url = "https://api.runpod.ai/v2/7y9m74cjmdk1w8/run"
     llm = OpenLLM(server_url=server_url)
 
     qa = RetrievalQA.from_chain_type(
