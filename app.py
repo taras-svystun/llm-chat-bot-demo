@@ -10,7 +10,7 @@ from custom_llm import CustomLLM
 st.set_page_config(page_title="💬 Chatbot")
 st.title("💬 Chatbot for text document QA")
 
-uploaded_file = st.file_uploader("Add a text file")
+uploaded_file = st.file_uploader("Add a text file in .txt format")
 if uploaded_file is not None:
     with open("_sample.txt", "w") as file:
         file.write("".join([line.decode() for line in uploaded_file]))
