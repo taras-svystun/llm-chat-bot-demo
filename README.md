@@ -12,7 +12,7 @@ The following technologies were used to approach the aforementioned problem:
 4. The code was added to a public github repo and then was built and hosted on cloud with streamlit.
 
 ## How to use
-1. Open the [link](https://test-task.streamlit.app).
+1. Open the [link](https://llm-chat-bot-demo.streamlit.app).
 2. Upload your .txt file (one can try `sample.txt` from the repo).
 3. Ask a question.
 
