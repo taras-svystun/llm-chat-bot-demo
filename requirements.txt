@@ -4,4 +4,3 @@ langchain
 openai
 tiktoken
 faiss-cpu
-python-dotenv
