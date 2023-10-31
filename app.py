@@ -5,7 +5,7 @@ from langchain.document_loaders import TextLoader
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.text_splitter import CharacterTextSplitter
 
-from cutom_llm import CustomLLM
+from custom_llm import CustomLLM
 
 st.set_page_config(page_title="💬 Chatbot")
 st.title("💬 Chatbot for text document QA")
