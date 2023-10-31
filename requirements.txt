@@ -5,3 +5,4 @@ openllm
 openai
 tiktoken
 faiss-cpu
+python-dotenv
