@@ -7,7 +7,7 @@ This test is designed to assess your skills in building, training, fine-tuning, 
 ## Solution
 The following technologies were used to approach the aforementioned problem:
 1. Llama-2-7b-chat-hf as the open source LLM.
-2. The aforementioned model was loaded and configured using BentoML inference serving package. Then it was hosted on RunPod.
+2. The aforementioned model was loaded, configured and hosted using serverless approach and RunPod.
 3. Streamlit as a web-service to create web UI.
 4. The code was added to a public github repo and then was built and hosted on cloud with streamlit.
 
@@ -15,6 +15,8 @@ The following technologies were used to approach the aforementioned problem:
 1. Open the [link](https://testtask.streamlit.app).
 2. Upload your .txt file (one can try `sample.txt` from the repo).
 3. Ask a question.
+
+ **Note**: You might face 1-2 minutes delay before getting the first answer from the chat-bot. RunPods shutdowns the machine with the model endpoint automatically after some time the machine being unused. So it needs some time to load the model anew.
 
 
 ## Issues
