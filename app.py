@@ -21,8 +21,13 @@ with st.sidebar:
 2. Just add your `.txt` file
 3. **Note**: the user may face 1-2 min delay during the first question. It may take some time to load the model on the server.""")
 
+    st.text("")
+    st.text("")
     uploaded_file = st.file_uploader("Add a .txt file")
-    st.button("Clear Chat History", on_click=clear_chat_history)
+    st.text("")
+    col1, col2 = st.beta_columns(2)
+    with col2:
+        st.button("Clear Chat History", on_click=clear_chat_history)
 
 if uploaded_file is not None:
     with open("_sample.txt", "w") as file:
