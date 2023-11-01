@@ -59,7 +59,7 @@ for message in st.session_state.messages:
 
 def generate_response(prompt_input):
     output = qa.run(prompt_input)
-    return output * 4
+    return output
 
 
 if prompt := st.chat_input(disabled=not uploaded_file is not None):
