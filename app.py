@@ -19,15 +19,15 @@ def clear_chat_history():
 
 with st.sidebar:
     st.title('Guidelines 📜')
-    st.markdown("""1. You can ask questions regarding your loaded text file;
-2. Just add your `.txt` or `.docx` file(s)\
+    st.markdown("""1. You can ask questions regarding your loaded text files;
+2. Just add your `.txt` or `.docx` files\
 <p style="color:Grey; font-size: 12px;">If you don't have a text file in quick access, the system comes with preloaded test file.</p>""",
 unsafe_allow_html=True)
     st.markdown("**Note**: the user may face 1-2 min delay during the first question due to model loading on the server.")
 
     st.text("")
     st.text("")
-    uploaded_files = st.file_uploader("Add a .txt file", type=['txt', 'docx'], accept_multiple_files=True)
+    uploaded_files = st.file_uploader("Add the text files", type=['txt', 'docx'], accept_multiple_files=True)
     st.text("")
     st.button(":red[Clear Chat History]", on_click=clear_chat_history)
 
