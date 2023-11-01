@@ -30,7 +30,7 @@ If you don't have a text file in quick access to any text file(s), the system co
     st.button(":red[Clear Chat History]", on_click=clear_chat_history)
 
 if bool(uploaded_files):
-    st.write([line.decode(encoding='latin-1') for i1, uploaded_file in enumerate(uploaded_files) for i2, line in enumerate(uploaded_file)])
+    st.write([line.decode(encoding='cp1252') for i1, uploaded_file in enumerate(uploaded_files) for i2, line in enumerate(uploaded_file)])
     # content = ''
     # for uploaded_file in uploaded_files:
     #     content += "".join([line.decode() for line in uploaded_file]) + '\n'
