@@ -5,3 +5,5 @@ openai
 tiktoken
 faiss-cpu
 docx
+lxml>=3.1.0
+typing-extensions
