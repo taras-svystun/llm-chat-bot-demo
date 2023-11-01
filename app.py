@@ -32,7 +32,7 @@ If you don't have a text file in quick access
 if bool(uploaded_files):
     content = ''
     for uploaded_file in uploaded_files:
-        content += "".join([line.decode() for line in uploaded_file])
+        content += "".join([line.decode() for line in uploaded_file]) + '\n'
     with open("_sample.txt", "w") as file:
         file.write(content)
     with open('_sample.txt', 'r') as file:
