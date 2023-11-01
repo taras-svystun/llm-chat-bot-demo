@@ -33,7 +33,7 @@ if bool(uploaded_files):
     for uploaded_file in uploaded_files:
         with open("_sample.txt", "a+") as file:
             file.write("".join([line.decode() for line in uploaded_file]) + '\n')
-    with open(_sample.txt) as file:
+    with open('_sample.txt') as file:
         content = file.readlines()
 
 # st.write(f'I have preloaded file. {bool(uploaded_files)=}')
