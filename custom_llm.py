@@ -22,7 +22,12 @@ You are a helpful, respectful and honest assistant. Always answer as helpfully a
 """
 
 def generate_answer(request):
-  prompt = {"input": {"prompt": template.format(request=request)}}
+  prompt = {"input": 
+            {"prompt": template.format(request=request),
+             "max_new_tokens": 2500,
+             "temperature": 0.9
+            }
+           }
   response = requests.post(f"{link_on_endp}/run", json=prompt, headers=headers)
   id_response = response.json()['id']
 
