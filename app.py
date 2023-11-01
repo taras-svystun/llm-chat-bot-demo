@@ -31,7 +31,6 @@ If you don't have a text file in quick access to any text file(s), the system co
     st.button(":red[Clear Chat History]", on_click=clear_chat_history)
 
 if bool(uploaded_files):
-    # st.write([(uploaded_file.readline(), uploaded_file.getvalue(), uploaded_file.read()) for i1, uploaded_file in enumerate(uploaded_files)][:2])
     content = ''
     for uploaded_file in uploaded_files:
         if uploaded_file.name.endswith("docx"):
@@ -42,13 +41,9 @@ if bool(uploaded_files):
 
     with open("_sample.txt", "w") as file:
         file.write(content)
-    with open('_sample.txt', 'r') as file:
-        contentss = file.readlines()
-    st.write("".join(contentss))
 
-# st.write(f'I have preloaded file. {bool(uploaded_files)=}')
+
 loader = TextLoader("_sample.txt") if bool(uploaded_files) else TextLoader("sample.txt")
-
 
 documents = loader.load()
 
