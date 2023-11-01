@@ -12,10 +12,10 @@ st.title("💬 Chatbot for text document QA")
 
 with st.sidebar:
     st.title('Guidelines 📜')
-    st.markdown("""1. You can ask questions regarding your loaded text file;
-
-                 2. Just add your `.txt` file
-
+    st.markdown("""1. You can ask questions regarding your loaded text file;\
+\
+                 2. Just add your `.txt` file\
+\
                  3. **Note**: the user may face 1-2 min delay during the first question. It may take some time to load the model on the server.""")
 
 uploaded_file = st.file_uploader("Add a .txt file")
