@@ -39,12 +39,12 @@ if bool(uploaded_files):
             content += "".join([paragraph.text for paragraph in document.paragraphs]) + '\n'
         else:
             content += "".join([line.decode() for line in uploaded_file]) + '\n'
-    st.write(content)
-    # with open("_sample.txt", "w") as file:
-    #     file.write(content)
-    # with open('_sample.txt', 'r') as file:
-    #     contentss = file.readlines()
-    # st.write(contentss)
+
+    with open("_sample.txt", "w") as file:
+        file.write(content)
+    with open('_sample.txt', 'r') as file:
+        contentss = file.readlines()
+    st.write(contentss)
 
 # st.write(f'I have preloaded file. {bool(uploaded_files)=}')
 loader = TextLoader("_sample.txt") if bool(uploaded_files) else TextLoader("sample.txt")
