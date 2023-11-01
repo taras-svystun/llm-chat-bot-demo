@@ -15,7 +15,7 @@ def clear_chat_history():
         {"role": "assistant", "content": "How can I help you?"}
     ]
 
-col1, col2 = st.sidebar.beta_columns(2)
+col1, col2 = st.sidebar.columns(2)
 
 with col1:
     st.title('Guidelines 📜')
