@@ -4,6 +4,6 @@ langchain
 openai
 tiktoken
 faiss-cpu
-docx
-lxml>=3.1.0
-typing-extensions
+python-docx 
+# lxml>=3.1.0
+# typing-extensions
