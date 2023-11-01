@@ -26,7 +26,6 @@ with st.sidebar:
     
     st.title('Notes📌')
     st.markdown("""
-**Notes**:\
 1. If you don't have a text file in quick access, the system comes with preloaded test file.\
 2. The user may face 1-2 min delay during the first question due to model loading on the server.
                 """)
