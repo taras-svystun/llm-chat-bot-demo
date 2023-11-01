@@ -36,7 +36,7 @@ if bool(uploaded_files):
     for uploaded_file in uploaded_files:
         if uploaded_file.name.endswith("docx"):
             document = Document(uploaded_file.name)
-            content += "".join([paragraph for paragraph in document.paragraphs]) + '\n'
+            content += "".join([paragraph.text for paragraph in document.paragraphs]) + '\n'
         else:
             content += "".join([line.decode() for line in uploaded_file]) + '\n'
     st.write(content)
