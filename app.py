@@ -54,16 +54,6 @@ if uploaded_file is not None:
     )
 
 
-def clear_chat_history():
-    st.session_state.messages = [
-        {"role": "assistant", "content": "How can I help you?"}
-    ]
-
-
-st.button("Clear Chat History", on_click=clear_chat_history)
-
-
-
 if "messages" not in st.session_state.keys():
     st.session_state.messages = [
         {"role": "assistant", "content": "How can I help you?"}
