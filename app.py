@@ -19,7 +19,8 @@ def clear_chat_history():
 with st.sidebar:
     st.title('Guidelines 📜')
     st.markdown("""1. You can ask questions regarding your loaded text file;
-2. Just add your `.txt` file
+2. Just add your `.txt` file\
+If you don't have a text file in quick access
 3. **Note**: the user may face 1-2 min delay during the first question. It may take some time to load the model on the server.""")
 
     st.text("")
@@ -28,18 +29,17 @@ with st.sidebar:
     st.text("")
     st.button(":red[Clear Chat History]", on_click=clear_chat_history)
 
-contents = []
 if bool(uploaded_files):
     for uploaded_file in uploaded_files:
-        content = "".join([line.decode() for line in uploaded_file]) + '\n'
-        contents.append(content)
         with open("_sample.txt", "a+") as file:
-            file.write(content)
+            file.write("".join([line.decode() for line in uploaded_file]) + '\n')
+    with open(_sample.txt) as file:
+        content = file.readlines()
 
-st.write(f'I have preloaded file. {bool(uploaded_files)=}')
+# st.write(f'I have preloaded file. {bool(uploaded_files)=}')
 loader = TextLoader("_sample.txt") if bool(uploaded_files) else TextLoader("sample.txt")
 
-st.write(contents)
+st.write(content)
 
 documents = loader.load()
 
