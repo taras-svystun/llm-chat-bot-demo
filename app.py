@@ -30,6 +30,7 @@ If you don't have a text file in quick access
     st.button(":red[Clear Chat History]", on_click=clear_chat_history)
 
 if bool(uploaded_files):
+    content = ''
     for uploaded_file in uploaded_files:
         with open("_sample.txt", "a+") as file:
             file.write("".join([line.decode() for line in uploaded_file]) + '\n')
