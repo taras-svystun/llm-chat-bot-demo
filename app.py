@@ -25,7 +25,7 @@ If you don't have a text file in quick access
 
     st.text("")
     st.text("")
-    uploaded_files = st.file_uploader("Add a .txt file", type=['txt'], accept_multiple_files=True)
+    uploaded_files = st.file_uploader("Add a .txt file", type=['txt', 'docx'], accept_multiple_files=True)
     st.text("")
     st.button(":red[Clear Chat History]", on_click=clear_chat_history)
 
