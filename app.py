@@ -35,9 +35,8 @@ if uploaded_files is not None:
         contents.append(content)
         with open("_sample.txt", "a+") as file:
             file.write(content)
-    loader = TextLoader("_sample.txt")
 
-st.write('I have preloaded file')
+st.write(f'I have preloaded file. {uploaded_files is not None=}')
 loader = TextLoader("_sample.txt") if uploaded_files is not None else TextLoader("sample.txt")
 
 st.write(contents)
