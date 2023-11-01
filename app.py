@@ -32,11 +32,12 @@ If you don't have a text file in quick access
 if bool(uploaded_files):
     content = ''
     for uploaded_file in uploaded_files:
-        with open("_sample.txt", "a+") as file:
-            file.write("".join([line.decode() for line in uploaded_file]) + '\n')
+        content += "".join([line.decode() for line in uploaded_file])
+    with open("_sample.txt", "w") as file:
+        file.write(content)
     with open('_sample.txt', 'r') as file:
-        content = file.readlines()
-    st.write(content)
+        contentss = file.readlines()
+    st.write(contentss)
 
 # st.write(f'I have preloaded file. {bool(uploaded_files)=}')
 loader = TextLoader("_sample.txt") if bool(uploaded_files) else TextLoader("sample.txt")
