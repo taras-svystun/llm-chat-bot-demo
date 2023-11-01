@@ -26,32 +26,35 @@ with st.sidebar:
     st.text("")
     uploaded_file = st.file_uploader("Add a .txt file")
     st.text("")
-    st.button("Clear Chat History", on_click=clear_chat_history)
+    st.button(":red[Clear Chat History]", on_click=clear_chat_history)
 
 
 if uploaded_file is not None:
     with open("_sample.txt", "w") as file:
         file.write("".join([line.decode() for line in uploaded_file]))
-
     loader = TextLoader("_sample.txt")
-    documents = loader.load()
+else:
+    loader = TextLoader("sample.txt")
 
-    text_splitter = CharacterTextSplitter(
-        separator="\n", chunk_size=1000, chunk_overlap=50
-    )
 
-    text_chunks = text_splitter.split_documents(documents)
+documents = loader.load()
 
-    texts = text_splitter.split_documents(documents)
+text_splitter = CharacterTextSplitter(
+    separator="\n", chunk_size=1000, chunk_overlap=50
+)
 
-    embeddings = OpenAIEmbeddings()
-    vectorstore = FAISS.from_documents(text_chunks, embeddings)
+text_chunks = text_splitter.split_documents(documents)
 
-    llm = CustomLLM(n=10)
+texts = text_splitter.split_documents(documents)
 
-    qa = RetrievalQA.from_chain_type(
-        llm=llm, chain_type="stuff", retriever=vectorstore.as_retriever()
-    )
+embeddings = OpenAIEmbeddings()
+vectorstore = FAISS.from_documents(text_chunks, embeddings)
+
+llm = CustomLLM(n=10)
+
+qa = RetrievalQA.from_chain_type(
+    llm=llm, chain_type="stuff", retriever=vectorstore.as_retriever()
+)
 
 
 if "messages" not in st.session_state.keys():
