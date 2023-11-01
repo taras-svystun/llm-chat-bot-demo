@@ -29,7 +29,7 @@ with st.sidebar:
     st.button(":red[Clear Chat History]", on_click=clear_chat_history)
 
 contents = []
-st.write(uploaded_files)
+st.write(bool(uploaded_files), uploaded_files is None, type(uploaded_files))
 if uploaded_files is not None:
     for uploaded_file in uploaded_files:
         content = "".join([line.decode() for line in uploaded_file]) + '\n'
