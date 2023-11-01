@@ -62,7 +62,7 @@ def generate_response(prompt_input):
 
     query = system_prompt + prompt_input
     output = qa.run(query)
-    return len(output)
+    return output * 4
 
 
 if prompt := st.chat_input(disabled=not uploaded_file is not None):
