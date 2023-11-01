@@ -25,10 +25,7 @@ with st.sidebar:
     st.text("")
     st.text("")
     uploaded_file = st.file_uploader("Add a .txt file")
-
-col1, col2 = st.sidebar.columns(2)
-
-with col2:
+    st.text("")
     st.button("Clear Chat History", on_click=clear_chat_history)
 
 
