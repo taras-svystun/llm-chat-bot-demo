@@ -24,18 +24,22 @@ with st.sidebar:
 
     st.text("")
     st.text("")
-    uploaded_file = st.file_uploader("Add a .txt file")
+    uploaded_files = st.file_uploader("Add a .txt file", type=['txt'], accept_multiple_files=True)
     st.text("")
     st.button(":red[Clear Chat History]", on_click=clear_chat_history)
 
-
-if uploaded_file is not None:
-    with open("_sample.txt", "w") as file:
-        file.write("".join([line.decode() for line in uploaded_file]))
+contents = []
+if uploaded_files is not None:
+    for uploaded_file in uploaded_files:
+        content = "".join([line.decode() for line in uploaded_file]) + '\n'
+        contents.append(content)
+        with open("_sample.txt", "a+") as file:
+            file.write(content)
     loader = TextLoader("_sample.txt")
 else:
     loader = TextLoader("sample.txt")
 
+st.write(contents)
 
 documents = loader.load()
 
