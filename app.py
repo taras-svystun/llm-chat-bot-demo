@@ -20,7 +20,7 @@ with st.sidebar:
     st.title('Guidelines 📜')
     st.markdown("""1. You can ask questions regarding your loaded text file;
 2. Just add your `.txt` file\
-If you don't have a text file in quick access
+If you don't have a text file in quick access to any text file(s), the system comes with preloaded test file.
 3. **Note**: the user may face 1-2 min delay during the first question. It may take some time to load the model on the server.""")
 
     st.text("")
@@ -30,14 +30,15 @@ If you don't have a text file in quick access
     st.button(":red[Clear Chat History]", on_click=clear_chat_history)
 
 if bool(uploaded_files):
-    content = ''
-    for uploaded_file in uploaded_files:
-        content += "".join([line.decode() for line in uploaded_file]) + '\n'
-    with open("_sample.txt", "w") as file:
-        file.write(content)
-    with open('_sample.txt', 'r') as file:
-        contentss = file.readlines()
-    st.write(contentss)
+    st.write("".join([line for line in uploaded_files]))
+    # content = ''
+    # for uploaded_file in uploaded_files:
+    #     content += "".join([line.decode() for line in uploaded_file]) + '\n'
+    # with open("_sample.txt", "w") as file:
+    #     file.write(content)
+    # with open('_sample.txt', 'r') as file:
+    #     contentss = file.readlines()
+    # st.write(contentss)
 
 # st.write(f'I have preloaded file. {bool(uploaded_files)=}')
 loader = TextLoader("_sample.txt") if bool(uploaded_files) else TextLoader("sample.txt")
