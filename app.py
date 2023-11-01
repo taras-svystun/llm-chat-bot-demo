@@ -10,13 +10,20 @@ from custom_llm import CustomLLM
 st.set_page_config(page_title="💬 Chatbot")
 st.title("💬 Chatbot for text document QA")
 
+def clear_chat_history():
+    st.session_state.messages = [
+        {"role": "assistant", "content": "How can I help you?"}
+    ]
+
 with st.sidebar:
     st.title('Guidelines 📜')
     st.markdown("""1. You can ask questions regarding your loaded text file;
 2. Just add your `.txt` file
 3. **Note**: the user may face 1-2 min delay during the first question. It may take some time to load the model on the server.""")
 
-uploaded_file = st.file_uploader("Add a .txt file")
+    uploaded_file = st.file_uploader("Add a .txt file")
+    st.button("Clear Chat History", on_click=clear_chat_history)
+
 if uploaded_file is not None:
     with open("_sample.txt", "w") as file:
         file.write("".join([line.decode() for line in uploaded_file]))
@@ -40,15 +47,6 @@ if uploaded_file is not None:
     qa = RetrievalQA.from_chain_type(
         llm=llm, chain_type="stuff", retriever=vectorstore.as_retriever()
     )
-
-
-def clear_chat_history():
-    st.session_state.messages = [
-        {"role": "assistant", "content": "How can I help you?"}
-    ]
-
-
-st.button("Clear Chat History", on_click=clear_chat_history)
 
 
 
