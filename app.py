@@ -29,16 +29,15 @@ with st.sidebar:
     st.button(":red[Clear Chat History]", on_click=clear_chat_history)
 
 contents = []
-st.write(bool(uploaded_files))
-if uploaded_files is not None:
+if bool(uploaded_files):
     for uploaded_file in uploaded_files:
         content = "".join([line.decode() for line in uploaded_file]) + '\n'
         contents.append(content)
         with open("_sample.txt", "a+") as file:
             file.write(content)
 
-st.write(f'I have preloaded file. {uploaded_files is not None=}')
-loader = TextLoader("_sample.txt") if uploaded_files is not None else TextLoader("sample.txt")
+st.write(f'I have preloaded file. {bool(uploaded_files)=}')
+loader = TextLoader("_sample.txt") if bool(uploaded_files) else TextLoader("sample.txt")
 
 st.write(contents)
 
