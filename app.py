@@ -30,9 +30,7 @@ with st.sidebar:
 2. The user may face 1-2 min delay during the first question due to model loading on the server
                 """)
 
-    st.text("")
     uploaded_files = st.file_uploader("Add the text files", type=['txt', 'docx'], accept_multiple_files=True)
-    st.text("")
     st.button(":red[Clear Chat History]", on_click=clear_chat_history)
 
 if bool(uploaded_files):
