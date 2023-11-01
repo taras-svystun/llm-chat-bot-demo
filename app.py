@@ -34,7 +34,7 @@ if bool(uploaded_files):
     # st.write([(uploaded_file.readline(), uploaded_file.getvalue(), uploaded_file.read()) for i1, uploaded_file in enumerate(uploaded_files)][:2])
     content = ''
     for uploaded_file in uploaded_files:
-        if uploaded_file.name().endswith("docx"):
+        if uploaded_file.name.endswith("docx"):
             document = Document(uploaded_file.name())
             content += "".join([paragraph for paragraph in document.paragraphs]) + '\n'
         else:
