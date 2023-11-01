@@ -26,7 +26,7 @@ with col1:
     st.text("")
     st.text("")
     uploaded_file = st.file_uploader("Add a .txt file")
-    st.text("")
+
 with col2:
     st.button("Clear Chat History", on_click=clear_chat_history)
 
