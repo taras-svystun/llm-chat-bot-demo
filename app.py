@@ -44,7 +44,7 @@ if bool(uploaded_files):
         file.write(content)
     with open('_sample.txt', 'r') as file:
         contentss = file.readlines()
-    st.write(contentss)
+    st.write("".join(contentss))
 
 # st.write(f'I have preloaded file. {bool(uploaded_files)=}')
 loader = TextLoader("_sample.txt") if bool(uploaded_files) else TextLoader("sample.txt")
