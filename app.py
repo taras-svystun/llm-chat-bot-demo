@@ -15,7 +15,9 @@ def clear_chat_history():
         {"role": "assistant", "content": "How can I help you?"}
     ]
 
-with st.sidebar:
+col1, col2 = st.sidebar.beta_columns(2)
+
+with col1:
     st.title('Guidelines 📜')
     st.markdown("""1. You can ask questions regarding your loaded text file;
 2. Just add your `.txt` file
@@ -25,9 +27,8 @@ with st.sidebar:
     st.text("")
     uploaded_file = st.file_uploader("Add a .txt file")
     st.text("")
-    col1, col2 = st.beta_columns(2)
-    with col2:
-        st.button("Clear Chat History", on_click=clear_chat_history)
+with col2:
+    st.button("Clear Chat History", on_click=clear_chat_history)
 
 if uploaded_file is not None:
     with open("_sample.txt", "w") as file:
