@@ -58,10 +58,7 @@ for message in st.session_state.messages:
 
 
 def generate_response(prompt_input):
-    system_prompt = "Please answer the questions laconically and clearly. "
-
-    query = system_prompt + prompt_input
-    output = qa.run(query)
+    output = qa.run(prompt_input)
     return output * 4
 
 
