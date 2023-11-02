@@ -38,11 +38,11 @@ if bool(uploaded_files):
     content = ''
     for uploaded_file in uploaded_files:
         if uploaded_file.name.endswith("docx"):
-            document = Document()
-            for line in uploaded_file:
-                document.add_paragraph(line)
-            content += "".join([paragraph.text for paragraph in document.paragraphs]) + '\n'
-            # content += "".join([BytesIO(line) for line in uploaded_file]) + '\n'
+            # document = Document()
+            # for line in uploaded_file:
+            #     document.add_paragraph(line)
+            # content += "".join([paragraph.text for paragraph in document.paragraphs]) + '\n'
+            content += "".join([line for line in uploaded_file]) + '\n'
         else:
             content += "".join([line.decode() for line in uploaded_file]) + '\n'
 
