@@ -37,7 +37,7 @@ if bool(uploaded_files):
     content = ''
     for uploaded_file in uploaded_files:
         if uploaded_file.name.endswith("docx"):
-            document = Document([line for line in uploaded_file])
+            # document = Document([line for line in uploaded_file])
             # document.add_paragraph()
             # content += "".join([paragraph.text for paragraph in document.paragraphs]) + '\n'
             content += "".join([type(line) for line in uploaded_file]) + '\n'
@@ -47,7 +47,6 @@ if bool(uploaded_files):
     st.write(content)
     with open("_sample.txt", "w") as file:
         file.write(content)
-    
 
 
 loader = TextLoader("_sample.txt") if bool(uploaded_files) else TextLoader("sample.txt")
