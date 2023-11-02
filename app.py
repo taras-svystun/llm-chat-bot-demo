@@ -1,6 +1,5 @@
 import streamlit as st
 from docx import Document
-from io import BytesIO
 from langchain.chains import RetrievalQA
 from langchain.vectorstores import FAISS
 from langchain.document_loaders import TextLoader
