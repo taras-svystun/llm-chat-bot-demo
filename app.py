@@ -43,7 +43,8 @@ if bool(uploaded_files):
             #     document.add_paragraph(line)
             # content += "".join([paragraph.text for paragraph in document.paragraphs]) + '\n'
             # content += "".join([BytesIO(line) for line in uploaded_file]) + '\n'
-            content = str([line for line in uploaded_file])
+            for line in uploaded_file:
+                content += line
         else:
             content += "".join([line.decode() for line in uploaded_file]) + '\n'
 
