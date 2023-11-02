@@ -4,4 +4,4 @@ langchain
 openai
 tiktoken
 faiss-cpu
-python-docx 
+python-docx
