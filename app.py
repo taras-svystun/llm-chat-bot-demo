@@ -45,7 +45,6 @@ if bool(uploaded_files):
         else:
             content += "".join([line.decode() for line in uploaded_file]) + '\n'
 
-    st.write(content)
     with open("_sample.txt", "w") as file:
         file.write(content)
 
