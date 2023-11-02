@@ -1,6 +1,7 @@
-streamlit
+streamlit==1.28.0
 replicate
 langchain
 openai
 tiktoken
 faiss-cpu
+python-docx
