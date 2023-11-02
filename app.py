@@ -1,5 +1,6 @@
 import streamlit as st
 from docx import Document
+from io import BytesIO
 from langchain.chains import RetrievalQA
 from langchain.vectorstores import FAISS
 from langchain.document_loaders import TextLoader
@@ -37,10 +38,11 @@ if bool(uploaded_files):
     content = ''
     for uploaded_file in uploaded_files:
         if uploaded_file.name.endswith("docx"):
-            # document = Document([line for line in uploaded_file])
-            # document.add_paragraph()
-            # content += "".join([paragraph.text for paragraph in document.paragraphs]) + '\n'
-            content += "".join([str(line.__class__) for line in uploaded_file]) + '\n'
+            document = Document()
+            for line in uploaded_file:
+                document.add_paragraph(BytesIO(line))
+            content += "".join([paragraph.text for paragraph in document.paragraphs]) + '\n'
+            # content += "".join([BytesIO(line) for line in uploaded_file]) + '\n'
         else:
             content += "".join([line.decode() for line in uploaded_file]) + '\n'
 
