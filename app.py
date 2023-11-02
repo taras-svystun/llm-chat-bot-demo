@@ -42,8 +42,6 @@ if bool(uploaded_files):
             document.save(uploaded_file.name)
             document = Document(uploaded_file.name)
             content += "".join([paragraph.text for paragraph in document.paragraphs]) + '\n'
-            # content += "".join([BytesIO(line) for line in uploaded_file]) + '\n'
-            # content = [line for line in uploaded_file]
         else:
             content += "".join([line.decode() for line in uploaded_file]) + '\n'
 
