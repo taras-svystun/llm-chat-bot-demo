@@ -39,9 +39,13 @@ if bool(uploaded_files):
     for uploaded_file in uploaded_files:
         if uploaded_file.name.endswith("docx"):
             # document = Document()
+            i = 0
             for line in uploaded_file:
                 # document.add_paragraph(line)
                 content += line
+                i += 1
+                if i >= 5:
+                    break
             # content += "".join([paragraph.text for paragraph in document.paragraphs]) + '\n'
             # content += "".join([BytesIO(line) for line in uploaded_file]) + '\n'
             # content = [line for line in uploaded_file]
