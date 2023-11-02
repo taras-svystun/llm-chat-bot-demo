@@ -40,7 +40,7 @@ if bool(uploaded_files):
             # document = Document([line for line in uploaded_file])
             # document.add_paragraph()
             # content += "".join([paragraph.text for paragraph in document.paragraphs]) + '\n'
-            content += "".join([type(line) for line in uploaded_file]) + '\n'
+            content += "".join([str(line.__class__) for line in uploaded_file]) + '\n'
         else:
             content += "".join([line.decode() for line in uploaded_file]) + '\n'
 
