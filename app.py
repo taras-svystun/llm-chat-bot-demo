@@ -35,15 +35,16 @@ with st.sidebar:
     st.button(":red[Clear Chat History]", on_click=clear_chat_history)
 
 if bool(uploaded_files):
-    content = ''
+    content = b''
     for uploaded_file in uploaded_files:
         if uploaded_file.name.endswith("docx"):
             # document = Document()
-            # for line in uploaded_file:
-            #     document.add_paragraph(line)
+            for line in uploaded_file:
+                # document.add_paragraph(line)
+                content += line
             # content += "".join([paragraph.text for paragraph in document.paragraphs]) + '\n'
             # content += "".join([BytesIO(line) for line in uploaded_file]) + '\n'
-            content = [line for line in uploaded_file]
+            # content = [line for line in uploaded_file]
         else:
             content += "".join([line.decode() for line in uploaded_file]) + '\n'
 
