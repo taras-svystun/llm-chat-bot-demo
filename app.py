@@ -33,6 +33,7 @@ with st.sidebar:
     uploaded_files = st.file_uploader("Add the text files", type=['txt', 'docx'], accept_multiple_files=True)
     st.button(":red[Clear Chat History]", on_click=clear_chat_history)
 
+
 if bool(uploaded_files):
     content = ''
     for uploaded_file in uploaded_files:
