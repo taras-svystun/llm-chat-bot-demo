@@ -1,7 +1,6 @@
 streamlit==1.28.0
-replicate
-langchain
-openai
-tiktoken
-faiss-cpu
-python-docx
+langchain==0.0.325
+faiss-cpu==1.7.4
+openai==0.28.1
+tiktoken==0.5.1
+python-docx==1.0.1
