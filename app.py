@@ -83,8 +83,8 @@ for message in st.session_state.messages:
 
 
 def generate_response(prompt_input):
-    st.write(prompt_input.__class__)
-    st.write(prompt_input)
+    # st.write(prompt_input.__class__)
+    # st.write(prompt_input)
     output = qa.run(prompt_input)
     return output
 
@@ -98,6 +98,8 @@ if prompt := st.chat_input():
 if st.session_state.messages[-1]["role"] != "assistant":
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
+            st.write(prompt.__class__)
+            st.write(prompt)
             response = generate_response(prompt)
             placeholder = st.empty()
             placeholder.markdown(response)
