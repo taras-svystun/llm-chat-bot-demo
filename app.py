@@ -83,6 +83,8 @@ for message in st.session_state.messages:
 
 
 def generate_response(prompt_input):
+    st.write(prompt_input.__class__)
+    st.write(prompt_input)
     output = qa.run(prompt_input)
     return output
 
