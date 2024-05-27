@@ -98,9 +98,7 @@ if prompt := st.chat_input():
 if st.session_state.messages[-1]["role"] != "assistant":
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
-            st.write(prompt.__class__)
-            st.write(prompt)
-            response = generate_response(prompt)
+            response = generate_response(st.session_state.messages[-1]["content"])
             placeholder = st.empty()
             placeholder.markdown(response)
     message = {"role": "assistant", "content": response}
